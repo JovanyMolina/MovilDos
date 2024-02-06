@@ -25,6 +25,8 @@ import com.example.marsphotos.network.MarsApi
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
+import com.example.marsphotos.data.NetworkMarsPhotosRepository
+
 
 /**
  * UI state for the Home screen
@@ -56,6 +58,8 @@ class MarsViewModel : ViewModel() {
             marsUiState = MarsUiState.Loading
             marsUiState = try {
                 val listResult = MarsApi.retrofitService.getPhotos()
+                val marsPhotosRepository = NetworkMarsPhotosRepository()
+
                 MarsUiState.Success(
                     "Success: ${listResult.size} Mars photos retrieved"
                 )
