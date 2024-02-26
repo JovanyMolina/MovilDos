@@ -46,7 +46,6 @@ class CleanupWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ct
 
         return withContext(Dispatchers.IO) {
             delay(DELAY_TIME_MILLIS)
-
             return@withContext try {
                 val outputDirectory = File(applicationContext.filesDir, OUTPUT_PATH)
                 if (outputDirectory.exists()) {
